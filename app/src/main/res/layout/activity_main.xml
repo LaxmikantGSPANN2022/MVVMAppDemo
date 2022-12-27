@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.mvvmappdemo.viewmodels.LoginViewModelJava" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/edittext_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:autofillHints="username"
+            android:inputType="text"
+            android:text="@={viewModel.userEmail}"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:importantForAutofill="no"
+            android:inputType="textPassword"
+            android:text="@={viewModel.userPassword}"
+            tools:ignore="LabelFor,TextFields" />
+
+        <Button
+            android:id="@+id/buttonSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:onClick="@{() -> viewModel.onLoginClicked()}"
+            android:text="@string/login"
+            app:toastMessage="@{viewModel.toastMessage}" />
+
+
+    </LinearLayout>
+</layout>
